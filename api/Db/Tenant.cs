@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace yapt.Db
 {
@@ -6,7 +7,10 @@ namespace yapt.Db
     {
 
         public int TenantId { get; set; }
+        [Required]
         public string Name { get; set; }
-        public IEnumerable<User> Users { get; set; }
+        [Required]
+        [RegularExpression("^([a-zA-Z0-9]+)$", ErrorMessage = "Invalid Tenant String")]
+        public string TenantString { get; set; }
     }
 }
